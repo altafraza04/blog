@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toonoverse - Another Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            text-align: center;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+        }
+        nav button {
+            background: #555;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        nav button:hover {
+            background: #777;
+        }
+        .search-bar {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+        .search-bar input {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .search-bar button {
+            background: #555;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .search-bar button:hover {
+            background: #777;
+        }
+        main {
+            position: relative;
+            z-index: 1;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+        .blog-frame {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .blog-frame .image {
+            flex: 7;
+        }
+        .blog-frame .text {
+            flex: 3;
+            background: rgba(255, 255, 255, 0.4); /* Translucent white background */
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added depth */
+        }
+        .blog-frame img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #555;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 5px;
+        }
+        .dropdown-content a {
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #777;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+    </style>
+    <script>
+        function searchBlog() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const blogs = [
+                { title: 'Naruto Uzumaki', link: 'blog.html' },
+                { title: 'Sasuke Uchiha', link: 'next-blog.html' },
+                { title: 'Kakashi Hatake', link: 'another-blog.html' }
+            ];
+            const result = blogs.find(blog => blog.title.toLowerCase().includes(query));
+            if (result) {
+                window.location.href = result.link;
+            } else {
+                alert('No blog found for the given keyword.');
+            }
+        }
+    </script>
+</head>
+<body>
+    <video class="background-video" autoplay muted loop>
+        <source src="Image/kakashi.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <main>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Search...">
+            <button onclick="searchBlog()">Search</button>
+        </div>
+        <nav>
+            <button onclick="location.href='index.html'">Home</button>
+            <div class="dropdown">
+                <button>Blog</button>
+                <div class="dropdown-content">
+                    <a href="blog.html">Naruto Uzumaki</a>
+                    <a href="next-blog.html">Sasuke Uchiha</a>
+                    <a href="another-blog.html">Kakashi Hatake</a>
+                </div>
+            </div>
+            <button onclick="location.href='about.html'">About</button>
+            <button onclick="location.href='contact.html'">Contact</button>
+        </nav>
+        <div class="blog-frame">
+            <div class="image">
+                <img src="Image/kakashi.jpg" alt="Blog Image">
+            </div>
+            <div class="text">
+                <h1>Kakashi Hatake</h1>
+                <h2>The Copy Ninja of the Hidden Leaf.</h2>
+                <h3>Kakashi Hatake’s story is one of wisdom, strength, and mystery. Known as the Copy Ninja, Kakashi’s journey is filled with lessons of leadership, sacrifice, and the importance of teamwork. His calm demeanor and unmatched skills make him one of the most iconic characters in the anime world.</h3>
+                <div style="text-align: center; margin-top: 1rem;">
+                    <button onclick="location.href='next-blog.html'" style="background: #555; color: #fff; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;">Previous Blog</button>
+                    <button onclick="location.href='index.html'" style="background: #555; color: #fff; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;">Home</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
